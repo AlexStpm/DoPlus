@@ -1,0 +1,1282 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Nunito', sans-serif;
+    font-size: 22px;
+    color: #fff;
+    height: 100vh;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    background-color: dodgerblue;
+}
+
+.ManageBoard ul {
+    list-style-type: none;
+}
+
+#root {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+
+    max-width: 100vw;
+}
+
+button.cool {
+    border-radius: 50px;
+    cursor: pointer;
+    border: 0;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 30%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all 0.5s ease;
+}
+
+button.cool:hover {
+    background-color: hsl(226, 71%, 54%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(43, 46, 221) 0px 7px 15px 0px;
+}
+
+button.cool:active {
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+    transform: translateY(7px);
+    transition: 100ms;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+
+    max-width: 100vw;
+}
+
+.LogInForm {
+    width: 100%;
+    max-width: 420px;
+    min-height: 400px;
+    max-height: 470px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.LogInForm h1 {
+    margin: 0;
+}
+
+.ViewTime,
+.ManageBoard,
+.Admin,
+.ViewTask,
+.ManageTime {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.LogInForm form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-grow: 1;
+    padding-bottom: 1rem;
+}
+
+
+.LogInForm input[type="text"],
+.LogInForm input[type="password"],
+.LogInForm button,
+.LogInForm textarea {
+    font-family: 'Nunito', sans-serif;
+    font-size: 22px;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+}
+
+.LogInForm label {
+    margin-top: 1rem;
+}
+
+.LogInForm button {
+    margin-top: 2rem;
+    padding: 0.5rem;
+}
+
+.offscreen {
+    position: absolute;
+    left: -9999px;
+}
+
+.hide {
+    display: none;
+}
+
+.valid {
+    color: limegreen;
+    margin-left: 0.25rem;
+}
+
+.invalid {
+    color: red;
+    margin-left: 0.25rem;
+}
+
+.errmsg {
+    background-color: lightpink;
+    color: firebrick;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.line {
+    display: inline-block;
+}
+
+h1 {
+    margin-top: 50px;
+    margin-bottom: 0.8rem;
+    margin-left: 0.5rem;
+}
+
+.AdminPage {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    color: rgb(50, 50, 50);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 5px 5px 5px rgb(75, 75, 75);
+    text-align: center;
+
+}
+
+.AdminPage .usersTable {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.AdminPage table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.AdminPage .SearchBar {
+    border: 1px solid;
+    border-radius: 0.5rem;
+    float: left;
+    text-align: left;
+}
+
+.AdminPage input {
+    padding: 0.5rem;
+    margin: 0.2rem;
+    text-align: center;
+    border: none;
+}
+
+.AdminPage button {
+    padding: 0.3rem;
+    margin: 0.2rem;
+    text-align: center;
+}
+
+.AdminPage table tr {
+    border: 1px solid;
+}
+
+.AdminPage .AddUserForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.AdminPage .AddUserForm form {
+    display: flex;
+    width: 70%;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.AdminPage .AddUserForm input {
+    border: 1px solid;
+    border-radius: 0.5rem;
+    width: 100%;
+    text-align: left;
+}
+
+.AdminPage .AddUserForm label {
+    margin-top: 0.2rem;
+}
+
+.AdminPage .AddUserForm button {
+    width: 100%;
+}
+
+.BoardView {
+    position: fixed;
+    padding: 0;
+    margin: 0;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    z-index: 1;
+    position: fixed;
+    width: 100%;
+    background-color: aliceblue;
+    height: 50px;
+    box-shadow: 0px 0px 5px 2px rgb(75, 75, 75);
+    display: flex;
+}
+
+.BoardInfo {
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.BoardInfo.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.BoardInfoContent {
+    padding: 20px;
+    border-radius: 12px;
+    background-color: white;
+    color: black;
+    transform: translateY(-999px);
+    transition: 0.5s all;
+}
+
+.BoardInfoContent.active {
+    transform: translateY(0);
+}
+
+.NotificationsList {
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+    /* background-color: rgba(0, 0, 0, 0.4); */
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    /* align-items: center;
+    justify-content: center; */
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.NotificationsList.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.NotificationsListContent {
+    border-radius: 12px;
+    background-color: white;
+    color: black;
+    margin-left: auto;
+    margin-right: 20%;
+    margin-top: 50px;
+    transform: scaleY(0);
+    transition: 0.5s all;
+    transform-origin: top;
+    overflow-y: scroll;
+}
+
+.NotificationsListContent.active {
+    transform: scaleY(1);
+
+}
+
+.Notification {
+    display: flex;
+    flex-direction: column;
+    background-color: lightsteelblue;
+    font-size: medium;
+    margin: 10px 0;
+    padding: 20px;
+}
+
+.Notification button {
+    margin-top: 10px;
+}
+
+.Notification.New {
+    background-color: rgb(243, 170, 170);
+}
+
+.ManageTask {
+    height: calc(100vh - 50px);
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    z-index: 1;
+    top: 50px;
+    left: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.ManageTask h1 {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    margin-left: 0.5rem;
+}
+
+.ManageTaskHeader {
+    display: flex;
+    flex-direction: row;
+}
+
+.ManageTaskHeader button {
+    margin-left: auto;
+    margin-right: 50px;
+    height: 40px;
+    width: 40px;
+}
+
+.TrashIcon {
+    transform: scale(1.5);
+    margin-top: 4px;
+}
+
+.ManageTask.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.ManageTaskContent {
+    padding: 20px;
+    border-radius: 12px 0 0 12px;
+    width: 50%;
+    background-color: white;
+    color: black;
+    transform: translateX(999px);
+    transition: 0.5s all;
+    overflow-y: auto;
+}
+
+.ManageTaskContent.active {
+    transform: translateX(0);
+}
+
+.ManageTaskForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.ManageTaskForm .TaskOption,
+.ManageTaskForm .TaskOptionTitle {
+    position: relative;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.ManageTaskForm .TaskOptionTitle input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border: none;
+    font-size: 17px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+}
+
+.ManageTaskForm .TaskOptionTitle input:focus {
+    outline: none;
+}
+
+.ManageTaskForm .TaskOptionTitle input:focus~label,
+.ManageTaskForm .TaskOptionTitle.notEmpty input~label {
+    transform: translateY(-20px);
+    font-size: 16px;
+    color: black;
+}
+
+.ManageTaskForm .TaskOptionTitle label {
+    position: absolute;
+    pointer-events: none;
+    bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+.ManageTaskForm .TaskOptionTitle .underline {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+}
+
+.ManageTaskForm .TaskOptionTitle .underline:before {
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 100%;
+    background: #3498db;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+
+.ManageTaskForm .TaskOptionTitle input:focus~.underline:before {
+    transform: scale(1);
+}
+
+
+.ManageTaskForm .TaskOption .EstimationProperties label {
+    margin-left: 0.5rem;
+}
+
+.ManageTaskForm .TaskOption .EstimationProperties input {
+    width: 45px;
+}
+
+.ManageTaskForm .TaskOption .AddTagButton {
+    margin-left: 10px;
+    padding: 0 0.5rem;
+}
+
+.ManageTaskForm .TaskOption select {
+    margin-left: 0.5rem;
+    min-width: 110px;
+    max-width: 100%;
+    font-size: medium;
+    border: none;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.ManageTaskForm .TaskOption input {
+    margin-left: 0.5rem;
+    width: 100%;
+}
+
+.TagList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+}
+
+.ManageTaskForm .TagList .Tag {
+    padding: 0.2rem;
+    margin-top: 0.3rem;
+    background-color: lightgrey;
+    font-size: small;
+    border-radius: 8px;
+}
+
+.ManageTaskForm .TagList .Tag:hover {
+    transition: 0.1s;
+    cursor: pointer;
+    text-decoration: line-through;
+    background-color: lightpink;
+}
+
+.ManageTaskForm .AcceptButton {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.ManageTaskForm .AcceptButton button {
+    padding: 0.5rem;
+}
+
+.mde-textarea-wrapper textarea.mde-text {
+    resize: none;
+    max-height: 30vh;
+    min-height: 30vh;
+}
+
+.mde-textarea-wrapper textarea.mde-text::-webkit-resizer {
+    display: none;
+}
+
+.mde-preview {
+    max-height: 30vh;
+    overflow-y: auto;
+}
+
+.AddTask-button {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+    padding: 10px;
+    height: 30px;
+}
+
+.logInfo {
+    display: flex;
+    flex-direction: row;
+    color: black;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+    padding: 10px;
+
+}
+.logUsername {
+    display: flex;
+	flex-direction: row;
+	align-items: center;
+    font-size: small;
+}
+
+.notificationGroup {
+    display: flex;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+    padding: 10px;
+
+}
+
+.notificationIcon {
+    width: 15px;
+    height: 15px;
+    border: solid red;
+    background-color: red;
+    margin-left: -10px;
+    margin-top: -5px;
+    border-radius: 10px;
+}
+
+.logout-button {
+    margin-left: 10px;
+    padding: 0 10px;
+    height: 30px;
+}
+
+.notifications-button {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 10px;
+    height: 30px;
+}
+
+.createBoard-button,
+.editBoard-button,
+.boardInfo-button,
+.logTime-button {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+    padding: 10px;
+    height: 30px;
+}
+
+.createBoard-button {
+    margin-left: 2%;
+}
+
+.Board-select,
+.tagFilter,
+.creationTimeFilter,
+.estimationFilter,
+.severityFilter {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    border-radius: 50px;
+    border: 0;
+    box-shadow: rgb(0 0 0 / 30%) 0 0 8px;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+    padding: 0 5px;
+    height: 30px;
+    font-size: 15px;
+    transition: all 0.5s ease;
+}
+
+.tagFilter {
+    margin-left: auto;
+}
+
+.Board-select:active,
+.tagFilter:active,
+.creationTimeFilter:active,
+.estimationFilter:active,
+.severityFilter:active {
+    transform: translateY(7px);
+    transition: 100ms;
+}
+
+.ViewTimePage {
+    background-color: white;
+    color: rgb(50, 50, 50);
+    padding: 0.5rem;
+    padding-top: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 5px 5px 5px rgb(75, 75, 75);
+    margin: 0.5rem auto;
+}
+
+.ViewTimePage h1 {
+    margin-bottom: 0.8rem;
+    padding-left: 2rem;
+}
+
+.ViewTimePage button {
+    padding: 0.3rem;
+    margin: 0.2rem;
+    text-align: center;
+}
+
+.ViewTimePage .AddTime-button {
+    margin-left: 63%;
+}
+
+.ViewTimePage table {
+    text-align: center;
+    border-collapse: collapse;
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+.ViewTimePage td,
+.ViewTimePage th {
+    border: 1px solid;
+    padding: 0.5rem;
+}
+
+.ViewTimePage table td:last-child,
+.ViewTimePage th:last-child {
+    border: none;
+}
+
+.ManageBoardPage {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    color: rgb(50, 50, 50);
+    padding: 0.5rem;
+    padding-top: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 5px 5px 5px rgb(75, 75, 75);
+    margin: 0.5rem auto;
+}
+
+.ManageBoardPage .CreateBoard input {
+    width: 25%;
+    padding: 0.5rem;
+    font-size: large;
+}
+
+.ManageBoardPage .CreateBoard button {
+    width: 25%;
+    padding: 0.5rem;
+    margin-left: 1rem;
+    font-size: large;
+}
+
+.ManageBoardPage .EditBoard .SavedBoardName,
+.ManageBoardPage .EditBoard .EditBoardNameForm {
+    display: flex;
+    flex-direction: row;
+}
+
+.ManageBoardPage .EditBoard .SavedBoardName button,
+.ManageBoardPage .EditBoard .EditBoardNameForm button {
+    padding: 0.2rem;
+    margin-left: 1rem;
+}
+
+.ManageBoardPage .EditBoard .RolesAndTags {
+    display: flex;
+    flex-direction: row;
+}
+
+.ManageBoardPage .EditBoard .RolesAndTags .Roles .Managers,
+.ManageBoardPage .EditBoard .RolesAndTags .Roles .Employees {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+}
+
+.ManageBoardPage .EditBoard .RolesAndTags .Roles .Managers .AddManagerForm,
+.ManageBoardPage .EditBoard .RolesAndTags .Roles .Employees .AddEmployeeForm {
+    margin-left: 0.5rem;
+}
+
+.ManageBoardPage .EditBoard .RolesAndTags .Roles .Managers button,
+.ManageBoardPage .EditBoard .RolesAndTags .Roles .Employees button {
+    padding: 0.1rem;
+    margin-left: 0.5rem;
+    margin-top: auto;
+}
+
+.ManageBoardPage .EditBoard .RolesAndTags .Roles,
+.ManageBoardPage .EditBoard .RolesAndTags .Tags {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ManageBoardPage .EditBoard .RolesAndTags .Tags {
+    overflow-x: hidden;
+}
+
+.ManageBoardPage .EditBoard .RolesAndTags .Tags .unactiveTags {
+    margin-top: 1rem;
+}
+
+.ManageBoardPage .EditBoard .RolesAndTags .Tags .AddTag {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.ManageBoardPage .EditBoard .RolesAndTags .Tags .AddTag button,
+.ManageBoardPage .EditBoard .RolesAndTags .Tags .AddTag input {
+    padding: 0.1rem;
+    margin-left: 0.3rem;
+    margin-bottom: auto;
+    margin-top: auto;
+
+}
+
+.removeUserButton {
+    height: 20px;
+    width: 20px;
+    padding: 0.1rem !important;
+    margin-left: 0.3rem;
+    font-size: x-small !important;
+    margin-top: auto;
+    margin-bottom: auto;
+    align-items: center;
+    text-align: center !important;
+}
+
+
+.ManageBoardPage .EditBoard .RolesAndTags .Tags .TagIsActiveSwitch {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.ManageBoardPage .EditBoard .RolesAndTags .Tags .TagIsActiveSwitch li {
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.ManageBoardPage .EditBoard .RolesAndTags .Tags .TagIsActiveSwitch button {
+    height: 20px;
+    width: 20px;
+    padding: 0.1rem;
+    margin-left: 0.3rem;
+    font-size: x-small;
+    margin-top: auto;
+    margin-bottom: auto;
+    align-items: center;
+    text-align: center;
+}
+
+.ManageBoardPage .EditBoard .ManageBoardActions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.ManageBoardPage .EditBoard .ManageBoardActions button {
+    margin: 0 5%;
+    padding: 10px;
+}
+
+.Board {
+    width: 100%;
+    text-align: center;
+}
+
+.TaskCard-false {
+    border-radius: 5px;
+    margin: 8px;
+    padding: 5px;
+    background-color: white;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+    color: rgb(66, 66, 66);
+    font-size: small;
+    text-align: left;
+}
+
+.TaskCard-false .TaskId,
+.TaskCard-true .TaskId {
+    color: grey;
+    text-align: right;
+}
+
+.TaskCard-true {
+    border-radius: 5px;
+    margin: 8px;
+    padding: 5px;
+    background-color: rgb(186, 241, 186);
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+    color: rgb(66, 66, 66);
+    font-size: small;
+    text-align: left;
+}
+
+.Priority {
+    position: relative;
+    display: inline-block;
+    padding: 0.15rem;
+    margin-top: 0.1rem;
+    border-radius: 5px;
+}
+
+.Priority.Low {
+    background-color: lightgray;
+    color: rgb(129, 129, 129)gray;
+    font-weight: bold;
+}
+
+.Priority.Medium {
+    background-color: slategray;
+    color: rgb(34, 40, 44);
+    font-weight: bold;
+}
+
+.Priority.High {
+    background-color: rgb(255, 196, 3);
+    color: rgb(100, 77, 0);
+    font-weight: bold;
+}
+
+.Priority.Highest {
+    background-color: darkorange;
+    color: rgb(124, 68, 0);
+    font-weight: bold;
+}
+
+.Priority.Blocker {
+    background-color: rgb(191, 37, 0);
+    color: rgb(95, 19, 0);
+    font-weight: bold;
+}
+
+.Priority .PriorityTooltipText {
+    visibility: hidden;
+    width: 80px;
+    opacity: 0.8;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    top: -2px;
+    left: 120%;
+    transform: scale(0.5);
+}
+
+.Priority:hover .PriorityTooltipText {
+    visibility: visible;
+    visibility: visible;
+    transform: scale(1);
+    font-weight: bold;
+    transition: 0.1s;
+    transition-delay: 0.3s;
+}
+
+.Priority .PriorityTooltipText::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+
+.Severity {
+    position: relative;
+    display: inline-block;
+    padding: 0.15rem;
+    margin-top: 0.1rem;
+    border-radius: 5px;
+}
+
+.Severity.Low {
+    background-color: lightgray;
+    color: rgb(129, 129, 129)gray;
+    font-weight: bold;
+}
+
+.Severity.Moderate {
+    background-color: slategray;
+    color: rgb(34, 40, 44);
+    font-weight: bold;
+}
+
+.Severity.Major {
+    background-color: rgb(255, 196, 3);
+    color: rgb(100, 77, 0);
+    font-weight: bold;
+}
+
+
+.Severity.Critical {
+    background-color: rgb(191, 37, 0);
+    color: rgb(95, 19, 0);
+    font-weight: bold;
+}
+
+.Estimation {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+}
+
+.Estimation .EstimationTooltipText {
+    visibility: hidden;
+    width: 80px;
+    opacity: 0.8;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+
+    width: 80px;
+    top: 150%;
+    left: 50%;
+    margin-left: -50%;
+    transform: scale(0.5);
+}
+
+.Estimation:hover .EstimationTooltipText {
+    visibility: visible;
+    transform: scale(1);
+    font-weight: bold;
+    transition: 0.1s;
+    transition-delay: 0.3s;
+}
+
+.Estimation .EstimationTooltipText::after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
+
+.Estimation div {
+    margin-right: 5px;
+}
+
+
+.TaskList-false {
+    flex-grow: 1;
+    border-radius: 4px;
+    min-height: 10px;
+    padding-bottom: 10px;
+    background-color: lightblue;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-gutter: stable both-edges;
+    max-height: 70vh;
+}
+
+
+.TaskList-true {
+    flex-grow: 1;
+    border-radius: 4px;
+    padding: 8px;
+    background-color: rgb(118, 194, 219);
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-gutter: stable;
+    max-height: 70vh;
+}
+
+.TaskList-false::-webkit-scrollbar,
+.TaskList-true::-webkit-scrollbar {
+    width: 10px;
+}
+
+.TaskList-false::-webkit-scrollbar-thumb,
+.TaskList-true::-webkit-scrollbar-thumb {
+    background-color: rgb(103, 165, 223);
+    border-radius: 100px;
+}
+
+.Column {
+    width: 18.5%;
+    margin: 8px;
+    background-color: lightblue;
+    color: black;
+    border-radius: 4px;
+    text-align: center;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.ViewTaskPage {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    color: rgb(50, 50, 50);
+    padding: 0.5rem;
+    padding-top: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 5px 5px 5px rgb(75, 75, 75);
+    margin: 0.5rem auto;
+}
+
+.ViewTaskPage .UpdateButton {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.ViewTaskPage .UpdateButton button {
+    padding: 0.5rem;
+    margin-right: 10%;
+}
+
+.ViewTaskInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ViewTaskOption {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin-top: 1rem;
+}
+
+.ViewTaskOption .Tag {
+    width: inherit;
+    padding: 0.2rem;
+    margin-top: 0.3rem;
+    background-color: lightgrey;
+    border-radius: 8px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.ViewTaskOptionLabel {
+    min-width: 30%;
+}
+
+.ViewTaskDescription {
+    margin-top: 1rem;
+    width: 90%;
+
+    word-wrap: break-word;
+    border-radius: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 10px;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+}
+
+.Column h3 {
+    padding: 8px;
+}
+
+.ViewTaskDescription * {
+    box-sizing: border-box;
+}
+
+.ViewTaskDescription h1 {
+    font-size: 1.6em;
+}
+
+.ViewTaskDescription h2 {
+    font-size: 1.4em;
+}
+
+.ViewTaskDescription h3 {
+    font-size: 1.2em;
+}
+
+.ViewTaskDescription h1,
+.ViewTaskDescription h2,
+.ViewTaskDescription h3 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.3em;
+}
+
+.ViewTaskDescription p,
+.ViewTaskDescription blockquote,
+.ViewTaskDescription ul,
+.ViewTaskDescription ol,
+.ViewTaskDescription dl,
+.ViewTaskDescription table,
+.ViewTaskDescription pre {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.ViewTaskDescription ul,
+.ViewTaskDescription ol {
+    padding-left: 2em;
+}
+
+.ViewTaskDescription pre {
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border-radius: 3px;
+}
+
+.ViewTaskDescription a {
+    color: #4078c0;
+    text-decoration: none;
+}
+
+.ViewTaskDescription blockquote {
+    margin-left: 0;
+    padding: 0 1em;
+    color: #777;
+    border-left: 0.25em solid #ddd;
+}
+
+.ManageTime .errmsg {
+    margin-bottom: -0.5rem;
+}
+
+.ManageTimePage {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    color: rgb(50, 50, 50);
+    padding: 1rem;
+    padding-top: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 5px 5px 5px rgb(75, 75, 75);
+    margin: 0.5rem auto;
+    height: 80%;
+    width: 50%;
+}
+
+.ManageTimePage .TimeOption {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+
+.ManageTimePage .TimeOption .TimePeriod {
+    z-index: 1;
+    position: absolute;
+    margin-left: 220px;
+}
+
+.ManageTimePage .TimeOption .Date {
+    z-index: 1;
+    position: absolute;
+    margin-left: 10px;
+}
+
+.react-datetime-picker__wrapper {
+    width: 500px;
+}
+
+.react-datetime-picker__inputGroup__day {
+    margin-right: 150px !important;
+}
+
+.react-datetime-picker__inputGroup__year {
+    margin-left: 70px !important;
+}
+
+.ManageTimePage textarea {
+    resize: none;
+    height: 70%;
+}
+
+.ManageTimePage .Actions {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.ManageTimePage .SaveButton {
+    width: 10%;
+    height: 100%;
+}
+
+.EditTimeButtons button {
+    margin: 0 5%;
+    padding: 1% 1%;
+}
